@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#170B3B"
+     >
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/imageView1"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignRight="@+id/button3"
+        android:layout_marginBottom="32dp"
+        android:background="#0B4C5F"
+        android:text="@string/btn9"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/button4"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_marginBottom="28dp"
+        android:background="#0B4C5F"
+        android:text="All income Details"
+        android:textColor="#FFFFFF"
+        android:onClick="incomeClick"
+        android:textSize="23sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/button3"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_marginBottom="25dp"
+        android:background="#0B4C5F"
+        android:onClick="dateClcik"
+        android:text="@string/btn7"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/a" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="23dp"
+        android:background="#0B4C5F"
+        android:onClick="viewData"
+        android:text="@string/btn6"
+        android:textColor="#FFFFFF"
+        android:textSize="23sp" />
+
+</RelativeLayout>

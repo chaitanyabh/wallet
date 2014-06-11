@@ -1,0 +1,81 @@
+package com.example.walletmanager;
+
+import android.app.Activity;
+import android.content.pm.ActivityInfo;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class ViewActivity extends Activity{
+
+	
+	SQLiteDatabase db = null;
+    String TableName = "transactionvalues";
+    String Data = "";
+    RelativeLayout rel;
+ 
+ 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.single);
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+        rel = (RelativeLayout)findViewById(R.id.lay);
+         
+        try {
+ 
+            db = this.openOrCreateDatabase("Income", MODE_PRIVATE, null);
+             
+            //getting the cursor object 
+             
+            Cursor c = db.rawQuery("SELECT * FROM " + TableName, null);
+ 
+            
+            int Column2 = c.getColumnIndex("amount");
+            int Column3 = c.getColumnIndex("catagory");
+
+ 
+            c.moveToFirst();
+             
+            if (c != null) {
+ 
+                do {
+                    
+                     
+                    int amount = c.getInt(Column2);
+                    String catagory=c.getString(Column3);
+                     
+                    Data = Data + amount +"\t\t\t\t" + catagory+ "\n\n";
+                     
+                } while (c.moveToNext());
+            }
+ 
+            TextView tv = new TextView(this); 
+            tv.setTextSize(18F);
+            tv.setTextColor(Color.WHITE);
+            //tv.setBackgroundColor(Color.DKGRAY);
+            tv.setText("\n"+"amount  \t |  catagory \n ____________________"
+            		+ "____\n"+Data);
+            rel.addView(tv);  
+             
+        }
+ 
+        catch (Exception e) {
+             
+            Log.e("Error", "Error", e);
+             
+            Toast.makeText(getBaseContext(), "No Data found   ", Toast.LENGTH_LONG).show();
+             
+        } finally {
+            if (db != null)
+                db.close();
+        }
+    }
+ 
+}
